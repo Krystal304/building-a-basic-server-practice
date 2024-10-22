@@ -15,24 +15,24 @@ router.post('/', async(req, res)=>{
     try {
         //create a varible 
         const newSong = new Song(req.body);
-        await newSong.save()
-        res.json(newSong)
+        await newSong.save();
+        res.json(newSong);
     } catch (err) {
-        console.error(err)
-        res.status(500).json({msg:'server error'})
+        console.error(err);
+        res.status(500).json({msg:'server error'});
         
     }
-})
+});
 //read
 
-router.get('/', async(req, res)=>{
+router.get('/', async (req, res)=>{
     try {
-        const allSongs = await Song.find({})
+        const allSongs = await Song.find({});
 
-        res.json(allSongs)
+        res.json(allSongs);
     } catch (err) {
-        console.error(err)
-        res.status(500).json({msg:'server error'})
+        console.error(err);
+        res.status(500).json({msg:'server error'});
         
     }
 })
@@ -40,13 +40,13 @@ router.get('/', async(req, res)=>{
 
 router.put('/:id', async(req, res)=>{
     try {
-        let updatedSong = await Song.findByIdAndUpdate(reg.params.id, req.body, {new: true})
-        res.json(updatedSong)
+        let updatedSong = await Song.findByIdAndUpdate(reg.params.id, req.body, {new: true});
+        res.json(updatedSong);
 
 
     } catch (err) {
-        console.error(err)
-        res.status(500).json({msg:'server error'})
+        console.error(err);
+        res.status(500).json({msg:'server error'});
         
     }
 })
@@ -57,11 +57,11 @@ router.delete('/:id', async(req, res)=>{
         let deletedSong = await Song.findByIdAndDelete(req.params.id);
         res.json(deletedSong);
     } catch (err) {
-        console.error(err)
-        res.status(500).json({msg:'server error'})
+        console.error(err);
+        res.status(500).json({msg:'server error'});
         
     }
-})
+});
 // router.get('/', (req, res)=>{
 //     res.send(`testing!!!`)
 // })
